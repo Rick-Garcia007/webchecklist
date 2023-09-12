@@ -39,17 +39,46 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     'secureapp',
+    
+    'crispy_forms',
+    
+    # reCAPTCHA
+    'captcha',
+    
+    # Two factors
+    'django_otp',
+    'django_otp.plugins.otp_static',
+    'django_otp.plugins.otp_totp',
+    'two_factor',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# reCAPTCHA keys
+
+RECAPTCHA_PUBLIC_KEY = '6Le3Ix4oAAAAAKptFDi5sSjXtNriFkraVpp2bcs5'
+RECAPTCHA_PRIVATE_KEY = '6Le3Ix4oAAAAADyzSlGn7sUey8uS-05tNlwU7PhB'
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
+    # Two factors
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django_otp.middleware.OTPMiddleware',
 ]
+
+# 2FA
+LOGIN_URL = 'two_factor:login'
+# this one is optional
+LOGIN_REDIRECT_URL = 'dashboard'
+
 
 ROOT_URLCONF = 'webchecklist.urls'
 
@@ -77,8 +106,11 @@ WSGI_APPLICATION = 'webchecklist.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'webchecklist',
+        'USER': 'postgres',
+        'PASSWORD': 'Joker007!@',
+        'PORT': '5432',
     }
 }
 
@@ -124,6 +156,7 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 MEDIA_URL = '/images/'
 
 MEDIA_ROOT = BASE_DIR / 'static/images'
+
 
 
 # Default primary key field type

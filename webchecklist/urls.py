@@ -7,9 +7,16 @@ from django.conf import settings
 from django.conf.urls.static import static
 # é usado para configurar e fornecer manipulação de arquivos estáticos em uma aplicação web Django. Arquivos estáticos são recursos como folhas de estilo CSS, arquivos JavaScript, imagens e outros arquivos que não mudam dinamicamente com base na interação do usuário. Esses arquivos são servidos diretamente ao cliente e não requerem processamento do servidor.
 
+# 2FA
+from two_factor.urls import urlpatterns as tf_urls
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('secureapp.urls')),
+    
+    # 2FA
+    path(r'', include(tf_urls)),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
