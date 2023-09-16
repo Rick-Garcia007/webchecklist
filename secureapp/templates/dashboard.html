@@ -13,11 +13,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white justify-content-center">
 
 
-        <a class="navbar-brand main-heading"> 
-                
-        &nbsp; SecureX 
-        
-        </a>
+        <a class="navbar-brand main-heading">&nbsp; SecureX</a>
 
     </nav>
 
@@ -26,16 +22,16 @@
 
     <div class="container bg-white shadow-md p-5 form-layout">
 
-        <h5> Welcome, {{user}} </h5>
+        <h5> Bem-vindo, {{user}} </h5>
 
         <br>
 
-        <p> This is your dashboard! </p>
+        <p> Este é o seu painel! </p>
 
 
         <br>
 
-        <a class="btn btn-info navbar-btn" type="button" href=""> Logout </a>
+        <a class="btn btn-info navbar-btn" type="button" href="{% url 'user-logout' %}"> Sair </a>
 
 
 
@@ -49,12 +45,12 @@
 
     <div class="container bg-white shadow-md p-5 form-layout">
 
-        <h5> About SecureX </h5>
+        <h5> Sobre SecureX </h5>
 
 
         <br>
 
-        <p> SecureX is the most secure website in the world! </p>
+        <p> SecureX é o site mais seguro do mundo! </p>
 
 
     </div>
@@ -66,20 +62,20 @@
 
     <div class="container bg-white shadow-md p-5 form-layout">
 
-        <h5> Two-Factor authentication </h5>
+        <h5> Autenticação de dois fatores </h5>
 
         <br>
 
-        <p> Two-factor authentication provides users with extra security. </p>
+        <p> A autenticação de dois fatores fornece aos usuários segurança extra. </p>
 
-        
-        <a class="btn btn-info navbar-btn" type="button" href=""> Enable 2FA </a>
+
+        <a class="btn btn-info navbar-btn" type="button" href=""> Habilitar 2FA </a>
 
 
         <br> <br>
 
 
-        <a class="btn btn-primary navbar-btn" type="button" href=""> 2FA account settings </a>
+        <a class="btn btn-primary navbar-btn" type="button" href=""> Configurações da conta 2FA </a>
 
 
     </div>
@@ -88,10 +84,7 @@
 
     {{ redirect_to_login_immediately }}
 
-    
+
 </body>
 
 {% endblock %}
-
-
-
